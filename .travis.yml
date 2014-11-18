@@ -1,0 +1,7 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: Vo+BJzNNGDoXYhrzTy8Qn9jQ33GRE7Bj/ELZIdpQMCQcz8Fj19e28uCTthne0d+nm3OwJqnL7PF5uw1ielYmu0zFRnu5DXvpiu1MRZkykxAdJJNRvWi9zi7LDR3lQxwFm/tpT/9S0rkk07d3RGtL2gQAltsY5u6j0BR/CSexqE4=
+  app: senescyt-mock
+  on:
+    repo: Senescyt/MockRespuesta
