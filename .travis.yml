@@ -2,7 +2,7 @@ language: ruby
 rvm:
   - 2.0.0
 script:
-  - rake about
+  - bundle exec rake about
 deploy:
   provider: heroku
   api_key:
