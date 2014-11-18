@@ -11,6 +11,26 @@ class ApiController < ApplicationController
     render_response :ok, response
   end
   
+  def obtener_archivo_con_ids
+    hash = {
+              elementos: [
+                          {
+                              id: 130,
+                              nombre: "NihpMMjSfO4909040394484558758.doc",
+                              ruta: "/tmp/2404f5b8-d21d-4c30-92e2-2f5c2311c39e-NihpMMjSfO4909040394484558758.doc",
+                              hash: "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+                          },
+                          {
+                              id: 131,
+                              nombre: "dYOvuxPDfY5838682484897547294.doc",
+                              ruta: "/tmp/6dcd2775-78fe-42a5-b291-cc098a2e7033-dYOvuxPDfY5838682484897547294.doc",
+                              hash: "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+                          }
+                      ]
+          }
+    render_response :ok, hash
+  end
+  
   private
   def random_word
     (0...10).map { ('a'..'z').to_a[rand(26)] }.join
