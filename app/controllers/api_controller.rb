@@ -12,7 +12,6 @@ class ApiController < ApplicationController
   end
   
   def obtener_archivo_con_ids
-    p params[:id]
     hash = {
               elementos: [
                           {
@@ -30,6 +29,7 @@ class ApiController < ApplicationController
     unless params[:hash].blank?
       hash[:elementos] = hash[:elementos].collect do |elemento|
         elemento[:hash] = random_word
+        elemento[:algoritmoHash] = params[:hash]
         elemento
       end
     end
