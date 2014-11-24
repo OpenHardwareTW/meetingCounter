@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   before_filter :validar_authtoken
+  protect_from_forgery only: [:nothing]
   
   # retornar 404 cuando id es no Integer
   # retornar mock cuando id es Integer
@@ -35,6 +36,11 @@ class ApiController < ApplicationController
     end
     
     render_response :ok, hash
+  end
+  
+  def firma_digital
+    response = { id: random_word }
+    render_response :ok, response
   end
   
   private
