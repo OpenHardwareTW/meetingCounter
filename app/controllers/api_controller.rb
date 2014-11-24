@@ -39,7 +39,7 @@ class ApiController < ApplicationController
   end
   
   def firma_digital
-    parametros = [params[:nombreUsuario], params[:textaAFirmar], params[:contrasenia]].select{ |x| !x.blank? }
+    parametros = [params[:nombreUsuario], params[:textoAFirmar], params[:contrasenia]].select{ |x| !x.blank? }
     if parametros.count < 3
       return render_response :unprocessable_entity
     end
