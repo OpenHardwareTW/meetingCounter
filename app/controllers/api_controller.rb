@@ -47,6 +47,13 @@ class ApiController < ApplicationController
     render_response :ok, response
   end
   
+  def verificar_contrasenia
+    if params[:contrasenia].length < 10
+     return render_response :bad_request 
+    end
+    render_response :ok
+  end
+  
   private
   def random_word
     (0...10).map { ('a'..'z').to_a[rand(26)] }.join
