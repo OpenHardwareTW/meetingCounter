@@ -49,7 +49,7 @@ class ApiController < ApplicationController
   
   def verificar_contrasenia
     if params[:contrasenia].length < 10
-     return render_response :bad_request 
+     return render_response :not_found 
     end
     render_response :ok
   end
