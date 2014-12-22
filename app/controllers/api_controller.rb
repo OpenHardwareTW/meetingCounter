@@ -13,7 +13,7 @@ class ApiController < ApplicationController
   end
 
   def obtener_archivo_con_ids
-    hash = {
+    archivos = {
               elementos: [
                           {
                               id: 130,
@@ -27,15 +27,16 @@ class ApiController < ApplicationController
                           }
                       ]
           }
+
     unless params[:hash].blank?
-      hash[:elementos] = hash[:elementos].collect do |elemento|
+      archivos[:elementos] = archivos[:elementos].collect do |elemento|
         elemento[:hash] = random_word
         elemento[:algoritmoHash] = params[:hash]
         elemento
       end
-      return render_response :ok, hash
     end
-    render_response :not_found
+
+    render_response :ok, archivos
   end
 
   def firma_digital
@@ -58,6 +59,7 @@ class ApiController < ApplicationController
   def random_word
     (0...10).map { ('a'..'z').to_a[rand(26)] }.join
   end
+
 
   def validar_authtoken
     unless request.headers['Authorization']
