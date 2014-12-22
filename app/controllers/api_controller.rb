@@ -1,7 +1,7 @@
 class ApiController < ApplicationController
   before_filter :validar_authtoken, except: [:obtener_pais_con_id]
   protect_from_forgery only: [:nothing]
-  
+
   # retornar 404 cuando id es no Integer
   # retornar mock cuando id es Integer
   def obtener_pais_con_id
@@ -11,7 +11,7 @@ class ApiController < ApplicationController
     response = { id: params[:id], nombre: random_word }
     render_response :ok, response
   end
-  
+
   def obtener_archivo_con_ids
     hash = {
               elementos: [
@@ -33,11 +33,11 @@ class ApiController < ApplicationController
         elemento[:algoritmoHash] = params[:hash]
         elemento
       end
+      return render_response :ok, hash
     end
-    
-    render_response :ok, hash
+    render_response :not_found
   end
-  
+
   def firma_digital
     parametros = [params[:nombreUsuario], params[:textoAFirmar], params[:contrasenia]].select{ |x| !x.blank? }
     if parametros.count < 3
@@ -46,25 +46,25 @@ class ApiController < ApplicationController
     response = { id: random_word }
     render_response :ok, response
   end
-  
+
   def verificar_contrasenia
     if params[:contrasenia].length < 10
-     return render_response :not_found 
+     return render_response :not_found
     end
     render_response :ok
   end
-  
+
   private
   def random_word
     (0...10).map { ('a'..'z').to_a[rand(26)] }.join
   end
-  
+
   def validar_authtoken
     unless request.headers['Authorization']
       return render_response :unauthorized
     end
   end
-  
+
   def render_response status, json = {}
     render json: json, status: status
   end
