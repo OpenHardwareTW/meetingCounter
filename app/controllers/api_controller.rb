@@ -55,6 +55,14 @@ class ApiController < ApplicationController
     render_response :ok
   end
 
+  def personas
+    names = []
+    10.times do
+      names << {nombre: random_word}
+    end
+    render_response :ok, names
+  end
+
   private
   def random_word
     (0...10).map { ('a'..'z').to_a[rand(26)] }.join
