@@ -68,6 +68,11 @@ class ApiController < ApplicationController
     render_response :ok, user
   end
 
+  def permisosPorToken
+    permisos = {elementos:[{id:1, acceso: 'CREAR', modulo: 'Administración de usuarios', funcion: 'Gestionar Usuarios', nombrePermiso: 'crear_usuarios'}]}
+    render_response :ok, permisos
+  end
+
   private
   def random_word
     (0...10).map { ('a'..'z').to_a[rand(26)] }.join

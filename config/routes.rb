@@ -3,6 +3,7 @@ MockRespuesta::Application.routes.draw do
   get 'archivos' => 'api#obtener_archivo_con_ids'
   get 'personas' => 'api#personas'
   get 'usuario/porToken' => 'api#porToken'
+  get 'permisos/porToken' => 'api#permisosPorToken'
   post 'firmaDigital' => 'api#firma_digital'
   post 'firmaDigital/credenciales/validar' => 'api#verificar_contrasenia'
 end
