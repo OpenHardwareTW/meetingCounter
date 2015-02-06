@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-  before_filter :validar_authtoken, except: [:obtener_pais_con_id]
+  before_filter :validar_authtoken, except: [:obtener_pais_con_id, :verificar_contrasenia]
   protect_from_forgery only: [:nothing]
 
   # retornar 404 cuando id es no Integer
