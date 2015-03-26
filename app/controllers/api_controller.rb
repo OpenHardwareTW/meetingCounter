@@ -73,6 +73,11 @@ class ApiController < ApplicationController
     render_response :ok, permisos
   end
 
+  def cantones
+    cantones = {elementos:[{id:'0101', nombre:'Cuenca', idZona:'06'}, {id:'0102', nombre:'Giron', idZona:'06'}, {id:'0103', nombre:'Gualaceo', idZona:'06'}]}
+    render_response :ok, cantones
+  end
+
   private
   def random_word
     (0...10).map { ('a'..'z').to_a[rand(26)] }.join
