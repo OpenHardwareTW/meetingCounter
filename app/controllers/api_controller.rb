@@ -64,7 +64,7 @@ class ApiController < ApplicationController
   end
 
   def porToken
-    user = {permisosArbol: random_word, institucion: {idInstitucion: random_word}}
+    user = {permisosArbol: random_word, institucion: {idInstitucion: 1001}}
     render_response :ok, user
   end
 
