@@ -7,4 +7,5 @@ MockRespuesta::Application.routes.draw do
   post 'firmaDigital' => 'api#firma_digital'
   post 'firmaDigital/credenciales/validar' => 'api#verificar_contrasenia'
   get 'cantones' => 'api#cantones'
+  get 'token/validar' => 'api#validar_token'
 end

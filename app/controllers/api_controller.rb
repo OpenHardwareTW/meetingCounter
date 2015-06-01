@@ -78,6 +78,10 @@ class ApiController < ApplicationController
     render_response :ok, cantones
   end
 
+  def validar_token
+    render text: 'admin'
+  end
+
   private
   def random_word
     (0...10).map { ('a'..'z').to_a[rand(26)] }.join
@@ -85,7 +89,7 @@ class ApiController < ApplicationController
 
 
   def validar_authtoken
-    unless request.headers['Authorization']
+    unless ( request.headers['Authorization'] || request.headers['x-token'] )
       return render_response :unauthorized
     end
   end
