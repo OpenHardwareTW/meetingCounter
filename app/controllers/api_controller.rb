@@ -79,7 +79,8 @@ class ApiController < ApplicationController
   end
 
   def validar_token
-    render text: 'admin'
+    usuario = request.headers['x-token'] == 'token' ? 'admin' : ''
+    render text: usuario
   end
 
   private
