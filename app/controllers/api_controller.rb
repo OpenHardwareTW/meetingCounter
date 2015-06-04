@@ -83,6 +83,10 @@ class ApiController < ApplicationController
     render text: usuario
   end
 
+  def consultar_discapacidad
+    dicapacidad = {deficienciaPredomina:'fisica'}
+  end
+
   private
   def random_word
     (0...10).map { ('a'..'z').to_a[rand(26)] }.join
@@ -94,6 +98,7 @@ class ApiController < ApplicationController
       return render_response :unauthorized
     end
   end
+
 
   def render_response status, json = {}
     render json: json, status: status
