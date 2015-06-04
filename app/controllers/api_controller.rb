@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-  before_filter :validar_authtoken, except: [:obtener_pais_con_id]
+  before_filter :validar_authtoken, except: [:obtener_pais_con_id, :consultar_discapacidad]
   protect_from_forgery only: [:nothing]
 
   # retornar 404 cuando id es no Integer
@@ -84,7 +84,8 @@ class ApiController < ApplicationController
   end
 
   def consultar_discapacidad
-    dicapacidad = {deficienciaPredomina:'fisica'}
+    discapacidad = {deficienciaPredomina:'fisica'}
+    render_response :ok, discapacidad
   end
 
   private
@@ -92,13 +93,11 @@ class ApiController < ApplicationController
     (0...10).map { ('a'..'z').to_a[rand(26)] }.join
   end
 
-
   def validar_authtoken
     unless ( request.headers['Authorization'] || request.headers['x-token'] )
       return render_response :unauthorized
     end
   end
-
 
   def render_response status, json = {}
     render json: json, status: status

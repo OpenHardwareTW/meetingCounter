@@ -87,3 +87,6 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   rails (= 4.0.4)
   sdoc
+
+BUNDLED WITH
+   1.10.2
