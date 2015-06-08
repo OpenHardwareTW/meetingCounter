@@ -1,5 +1,7 @@
+require 'securerandom'
+
 class ApiController < ApplicationController
-  before_filter :validar_authtoken, except: [:obtener_pais_con_id, :consultar_discapacidad]
+  before_filter :validar_authtoken, except: [:obtener_pais_con_id, :consultar_discapacidad, :subir_archivo]
   protect_from_forgery only: [:nothing]
 
   # retornar 404 cuando id es no Integer
@@ -86,6 +88,10 @@ class ApiController < ApplicationController
   def consultar_discapacidad
     discapacidad = {deficienciaPredomina:'fisica'}
     render_response :ok, discapacidad
+  end
+
+  def subir_archivo
+    render text: SecureRandom.uuid, status: :created
   end
 
   private

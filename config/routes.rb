@@ -9,5 +9,5 @@ MockRespuesta::Application.routes.draw do
   get 'cantones' => 'api#cantones'
   get 'token/validar' => 'api#validar_token'
   get 'discapacidad/:identificacion' => 'api#consultar_discapacidad'
-
+  post 'archivos/subir' => 'api#subir_archivo'
 end
