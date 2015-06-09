@@ -1,7 +1,7 @@
 require 'securerandom'
 
 class ApiController < ApplicationController
-  before_filter :validar_authtoken, except: [:obtener_pais_con_id, :consultar_discapacidad, :subir_archivo]
+  before_filter :validar_authtoken, except: [:obtener_pais_con_id, :consultar_discapacidad, :subir_archivo, :return_nombre_para_regimen]
   protect_from_forgery only: [:nothing]
 
   # retornar 404 cuando id es no Integer
@@ -92,6 +92,18 @@ class ApiController < ApplicationController
 
   def subir_archivo
     render text: SecureRandom.uuid, status: :created
+  end
+
+  def return_nombre_para_regimen
+    custom_endpoint = ["cursosAcademicos", "tiposFormacion"]
+    if custom_endpoint.include?(params[:endpoint]) and params[:regimen] == "2013"
+      key = params[:endpoint] == custom_endpoint.first ? :cursoNombre : :titulacionNombre
+      response = {}
+      response[key] = {nombre: random_word}
+      render_response :ok, response
+    else
+      render_response :ok, {nombre: random_word}
+    end
   end
 
   private

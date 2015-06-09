@@ -1,5 +1,6 @@
 MockRespuesta::Application.routes.draw do
   get 'paises/:id' => 'api#obtener_pais_con_id'
+  get 'ciudades/:id' => 'api#obtener_pais_con_id'
   get 'archivos' => 'api#obtener_archivo_con_ids'
   get 'personas' => 'api#personas'
   get 'usuario/porToken' => 'api#porToken'
@@ -10,4 +11,6 @@ MockRespuesta::Application.routes.draw do
   get 'token/validar' => 'api#validar_token'
   get 'discapacidad/:identificacion' => 'api#consultar_discapacidad'
   post 'archivos/subir' => 'api#subir_archivo'
+
+  get ":regimen/:endpoint/:id" => 'api#return_nombre_para_regimen'
 end
