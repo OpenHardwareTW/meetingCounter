@@ -12,5 +12,7 @@ MockRespuesta::Application.routes.draw do
   get 'discapacidad/:identificacion' => 'api#consultar_discapacidad'
   post 'archivos/subir' => 'api#subir_archivo'
 
+  get ":regimen/instituciones/nacionales/:id" => 'api#return_nombre_para_regimen'
   get ":regimen/:endpoint/:id" => 'api#return_nombre_para_regimen'
+  post "archivos/:id/pdf" => 'api#return_created'
 end
