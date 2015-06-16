@@ -12,6 +12,16 @@ class ApiController < ApplicationController
     render_response :ok, response
   end
 
+  # retornar 404 cuando id es no Integer
+  # retornar mock cuando id es Integer
+  def obtener_pais_con_secuencial
+    if params[:secuencial].to_i == 0
+      return render_response :not_found
+    end
+    response = { secuencial: params[:secuencial], nombre: random_word }
+    render_response :ok, response
+  end
+
   def obtener_archivo_con_ids
     archivos = {
               elementos: [
