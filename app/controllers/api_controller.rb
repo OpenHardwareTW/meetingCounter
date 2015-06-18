@@ -118,6 +118,10 @@ class ApiController < ApplicationController
     render_response :created
   end
 
+  def guardar_titulaciones
+    render_response :ok, {}
+  end
+
   private
   def random_word
     (0...10).map { ('a'..'z').to_a[rand(26)] }.join

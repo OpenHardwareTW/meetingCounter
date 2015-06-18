@@ -16,4 +16,5 @@ MockRespuesta::Application.routes.draw do
   get ":regimen/instituciones/nacionales/:id" => 'api#return_nombre_para_regimen'
   get ":regimen/:endpoint/:id" => 'api#return_nombre_para_regimen'
   post "archivos/:id/pdf" => 'api#return_created'
+  post "titulaciones/:archivoId" => "api#guardar_titulaciones"
 end
