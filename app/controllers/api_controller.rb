@@ -119,7 +119,7 @@ class ApiController < ApplicationController
   end
 
   def guardar_titulaciones
-    render_response :ok, {}
+    render_response :created, {}
   end
 
   private
