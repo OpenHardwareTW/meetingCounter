@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-  before_filter :validar_authtoken, except: [:obtener_pais_con_id, :consultar_discapacidad, :subir_archivo, :return_nombre_para_regimen]
+  before_filter :validar_authtoken, except: [:obtener_pais_con_id, :consultar_discapacidad, :subir_archivo, :return_nombre_para_regimen, :regimenes]
   protect_from_forgery only: [:nothing]
 
   # retornar 404 cuando id es no Integer
@@ -120,6 +120,19 @@ class ApiController < ApplicationController
 
   def guardar_titulaciones
     render_response :created, {}
+  end
+  
+  def regimenes
+    json = {
+       elementos: [{
+          id: 1,
+          nombre: "2009"
+       }, {
+          id: 2,
+          nombre: "2013"
+       }]
+    }
+    render_response :ok, json
   end
 
   private
