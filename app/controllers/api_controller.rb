@@ -2,6 +2,12 @@ class ApiController < ApplicationController
   before_filter :validar_authtoken, except: [:obtener_pais_con_id, :consultar_discapacidad, :subir_archivo, :return_nombre_para_regimen, :regimenes]
   protect_from_forgery only: [:nothing]
 
+  def contarPersonas
+    render_response :created, JSON.parse(request.raw_post)
+  end
+
+
+
   # retornar 404 cuando id es no Integer
   # retornar mock cuando id es Integer
   def obtener_pais_con_id

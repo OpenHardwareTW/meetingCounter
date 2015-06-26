@@ -1,4 +1,5 @@
 MockRespuesta::Application.routes.draw do
+  
   get 'paises/:id' => 'api#obtener_pais_con_id'
   get 'paises/secuencial/:secuencial' => 'api#obtener_pais_con_secuencial'
   get 'ciudades/:id' => 'api#obtener_pais_con_id'
@@ -17,4 +18,6 @@ MockRespuesta::Application.routes.draw do
   post "archivos/:id/pdf" => 'api#return_created'
   post "titulaciones/:archivoId" => "api#guardar_titulaciones"
   get "2013/regimenes" => "api#regimenes"
+  
+  post "contador/personas" => "api#contarPersonas" 
 end
