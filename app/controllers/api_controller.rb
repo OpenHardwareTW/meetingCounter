@@ -1,9 +1,24 @@
+require 'json'
+
 class ApiController < ApplicationController
-  before_filter :validar_authtoken, except: [:obtener_pais_con_id, :consultar_discapacidad, :subir_archivo, :return_nombre_para_regimen, :regimenes]
+  before_filter :validar_authtoken, except: [:obtener_pais_con_id, :consultar_discapacidad, :subir_archivo, :return_nombre_para_regimen, :regimenes, :contarPersonas]
   protect_from_forgery only: [:nothing]
 
+  $contador = 0
+
   def contarPersonas
-    render_response :created, JSON.parse(request.raw_post)
+    if params[:estado].to_i == 1
+      $contador += 1
+    else
+      $contador -= 1
+      if $contador < 0 
+        $contador = 0
+      end
+    end
+
+    print $contador
+    respuesta = { 'contador': $contador }
+    render_response :created, respuesta
   end
 
 

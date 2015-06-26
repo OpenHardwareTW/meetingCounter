@@ -19,5 +19,5 @@ MockRespuesta::Application.routes.draw do
   post "titulaciones/:archivoId" => "api#guardar_titulaciones"
   get "2013/regimenes" => "api#regimenes"
   
-  post "contador/personas" => "api#contarPersonas" 
+  post "contador/personas/:estado" => "api#contarPersonas" 
 end
